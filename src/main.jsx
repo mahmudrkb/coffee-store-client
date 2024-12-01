@@ -19,7 +19,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App></App>,
-        loader: () => fetch("http://localhost:5000/coffee"),
+        loader: () =>
+          fetch("https://coffee-server-gamma-three.vercel.app/coffee"),
       },
       {
         path: "addCoffee",
@@ -29,7 +30,9 @@ const router = createBrowserRouter([
         path: "updateCoffee/:id",
         element: <UpdateCoffee></UpdateCoffee>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffee/${params.id}`),
+          fetch(
+            `https://coffee-server-gamma-three.vercel.app/coffee/${params.id}`
+          ),
       },
       {
         path: "/signin",
@@ -40,18 +43,19 @@ const router = createBrowserRouter([
         element: <Signup></Signup>,
       },
       {
-        path:"/users",
-        element:<Users></Users>,
-        loader:()=> fetch("http://localhost:5000/users")
-      }
+        path: "/users",
+        element: <Users></Users>,
+        loader: () =>
+          fetch("https://coffee-server-gamma-three.vercel.app/users"),
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-   <AuthProvider>
-   <RouterProvider router={router} />
-   </AuthProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

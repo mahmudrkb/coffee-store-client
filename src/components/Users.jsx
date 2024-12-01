@@ -20,7 +20,7 @@ const Users = () => {
       if (result.isConfirmed) {
         // delete data in data server
 
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://coffee-server-gamma-three.vercel.app/users/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -33,8 +33,8 @@ const Users = () => {
                 icon: "success",
               });
 
-              const remaining=users.filter(user=>user._id !== _id)
-              setUsers(remaining)
+              const remaining = users.filter((user) => user._id !== _id);
+              setUsers(remaining);
             }
           });
       }

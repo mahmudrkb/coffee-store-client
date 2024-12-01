@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { name, _id, photo, taste } = coffee;
 
   const handleDelete = (_id) => {
@@ -16,7 +16,7 @@ const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/coffee/${_id}`, {
+        fetch(`https://coffee-server-gamma-three.vercel.app/coffee/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -28,8 +28,8 @@ const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
                 text: "Your Coffee has been deleted.",
                 icon: "success",
               });
-              const remaining= coffees.filter(cof=> cof._id !== _id)
-              setCoffees(remaining)
+              const remaining = coffees.filter((cof) => cof._id !== _id);
+              setCoffees(remaining);
             }
           });
       }
@@ -46,7 +46,8 @@ const CoffeeCard = ({ coffee,coffees,setCoffees }) => {
         <div className="card-actions flex-row justify-end">
           <button className="btn btn-primary">View</button>
           <Link to={`updateCoffee/${_id}`}>
-          <button className="btn btn-primary">Edit</button></Link>
+            <button className="btn btn-primary">Edit</button>
+          </Link>
           <button
             onClick={() => {
               handleDelete(_id);
